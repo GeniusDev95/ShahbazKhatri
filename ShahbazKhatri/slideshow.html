@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel in Modal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .custom-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        .custom-carousel {
+            position: relative;
+            max-width: 600px;
+            width: 80%; /* Responsive width */
+            overflow: hidden; /* Hide non-visible images */
+            margin: auto;
+        }
+
+        .custom-carousel-images {
+            display: flex; /* Use flexbox for horizontal layout */
+            transition: transform 0.5s ease-in-out; /* Smooth transition */
+        }
+
+        .custom-carousel-image {
+            min-width: 100%; /* Each image takes full width */
+            transition: opacity 0.5s ease-in-out; /* Fade effect */
+            opacity: 0; /* Initially hidden */
+        }
+
+        .custom-carousel-image.active {
+            opacity: 1; /* Show active image */
+        }
+
+        .custom-close {
+            color: white;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .custom-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 20px 10px;
+            cursor: pointer;
+            z-index: 2;
+            font-size: xxx-large;
+        }
+
+        .custom-prev {
+            left: 10px;
+        }
+
+        .custom-next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Trigger Images -->
+    <img class="triggerImage" src="https://www.lkshields.ie/images/uploads/news/OPR_Article.png" alt="Click me!" style="width: 200px; cursor: pointer;">
+    <img class="triggerImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0KG6jr5si23cmXlQWE1V13fGNUlIv9uzvQ&s" alt="Click me!" style="width: 200px; cursor: pointer;">
+    <img class="triggerImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAn2DfT_DdowKe1LKiDMD-COLTtT9C21cH3g&s" alt="Click me!" style="width: 200px; cursor: pointer;">
+
+    <!-- Modal Structures -->
+    <div id="modal1" class="custom-modal">
+        <span class="custom-close">&times;</span>
+        <div class="custom-carousel">
+            <div class="custom-carousel-images">
+                <img class="custom-carousel-image active" src="https://fakeimg.pl/600x400/?text=Image+1" alt="Image 1">
+                <img class="custom-carousel-image" src="https://fakeimg.pl/600x400/?text=Image+2" alt="Image 2">
+                <img class="custom-carousel-image" src="https://fakeimg.pl/600x400/?text=Image+3" alt="Image 3">
+            </div>
+        </div>
+        <button class="custom-prev custom-button" onclick="changeImage(event, 'modal1', -1)">&#10094;</button>
+        <button class="custom-next custom-button" onclick="changeImage(event, 'modal1', 1)">&#10095;</button>
+    </div>
+
+    <div id="modal2" class="custom-modal">
+        <span class="custom-close">&times;</span>
+        <div class="custom-carousel">
+            <div class="custom-carousel-images">
+                <img class="custom-carousel-image active" src="https://fakeimg.pl/600x400/?text=Image+4" alt="Image 4">
+                <img class="custom-carousel-image" src="https://fakeimg.pl/600x400/?text=Image+5" alt="Image 5">
+                <img class="custom-carousel-image" src="https://fakeimg.pl/600x400/?text=Image+6" alt="Image 6">
+            </div>
+        </div>
+        <button class="custom-prev custom-button" onclick="changeImage(event, 'modal2', -1)">&#10094;</button>
+        <button class="custom-next custom-button" onclick="changeImage(event, 'modal2', 1)">&#10095;</button>
+    </div>
+
+    <div id="modal3" class="custom-modal">
+        <span class="custom-close">&times;</span>
+        <div class="custom-carousel">
+            <div class="custom-carousel-images">
+                <img class="custom-carousel-image active" src="https://fakeimg.pl/600x400/?text=Image+7" alt="Image 7">
+                <img class="custom-carousel-image" src="https://fakeimg.pl/600x400/?text=Image+8" alt="Image 8">
+                <img class="custom-carousel-image" src="https://fakeimg.pl/600x400/?text=Image+9" alt="Image 9">
+            </div>
+        </div>
+        <button class="custom-prev custom-button" onclick="changeImage(event, 'modal3', -1)">&#10094;</button>
+        <button class="custom-next custom-button" onclick="changeImage(event, 'modal3', 1)">&#10095;</button>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+
+        const modals = document.querySelectorAll('.custom-modal');
+        const triggerImages = document.querySelectorAll('.triggerImage');
+
+        triggerImages.forEach((triggerImage, index) => {
+            triggerImage.onclick = function () {
+                currentImageIndex = 0; // Reset index for each modal
+                modals[index].style.display = "flex"; // Show the corresponding modal
+                showImage(index, currentImageIndex);
+            }
+        });
+
+        document.querySelectorAll('.custom-close').forEach((closeButton) => {
+            closeButton.onclick = function () {
+                this.parentElement.style.display = "none"; // Hide the modal
+            }
+        });
+
+        function changeImage(event, modalId, n) {
+            const modalIndex = modalId.replace('modal', '') - 1; // Extract index from modal ID
+            currentImageIndex += n;
+            const images = document.querySelectorAll(`#${modalId} .custom-carousel-image`);
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0; // Loop back to first image
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1; // Loop to last image
+            }
+            showImage(modalIndex, currentImageIndex);
+        }
+
+        function showImage(index, imgIndex) {
+            const images = document.querySelectorAll(`#modal${index + 1} .custom-carousel-image`);
+            const carouselImages = document.querySelector(`#modal${index + 1} .custom-carousel-images`);
+            images.forEach((img, i) => {
+                img.classList.remove('active'); // Hide all images
+            });
+            images[imgIndex].classList.add('active'); // Show the current image
+            
+            // Update the transform property to slide images
+            const offset = -imgIndex * 100; // Get offset based on current index
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+    </script>
+</body>
+</html>

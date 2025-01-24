@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="practice.css"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+
+* {
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  
+  &.active-modal {
+    overflow:hidden;
+    header.header {
+      transition:0.2s;
+      -webkit-filter: blur(2px);
+      filter: blur(2px);
+    }
+  }
+}
+
+header.header {
+  width :100%;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  transition:0.2s;
+  background: url('https://images.pexels.com/photos/129105/pexels-photo-129105.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb')no-repeat center center;
+  background-size:cover;
+}
+
+.container {
+  .avatar {
+    width:120px;
+    height:120px;
+    overflow:hidden;
+    border-radius:100%;
+    margin-bottom:15px;
+    img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border:none;
+    }
+    
+   
+    
+  }
+  
+   span {
+      display:inline-block;
+      background:#fff;
+      border-radius:100px;
+      padding:10px 20px;
+      font-size:11px;
+      font-weight:700;
+      margin-top:10px;
+      cursor:pointer; 
+    }
+  
+}
+
+.box-modal {
+  position:fixed;
+  width:100%;
+  height:100vh;
+  left:0px;
+  top:0px;
+  visibility:hidden;
+  .overlay {
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0px;
+    top:0px;
+    background:#000;
+    opacity:0;
+    transition:opacity 1.3s;
+  }
+  
+  .body-modal {
+    max-height:0px;
+    opacity:0;
+    overflow:hidden;
+    
+    .inner-body-modal {
+      background:#fff;
+      padding:25px 50px;
+      border-radius: 8px;
+      position:relative;
+      z-index:1;
+      box-shadow:0px 0px 65px 0px rgba(0, 0, 0, 0.43);
+      max-width: 500px;
+      max-height: 500px;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      overflow-y:auto;
+      -webkit-scrollbar: width(125px);      
+      scrollbar-width: none;     /* width of the entire scrollbar */
+      
+    }
+    .inner-body-modal h2{
+      line-height: 40px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .inner-body-modal li {
+      line-height: 20px;
+      margin-bottom: 8px;
+    }
+  }
+  
+   &.modal-show {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+     visibility:visible;
+     transition:all 0.9s;
+    .overlay {
+      opacity:0.5;
+      transition:opacity 1.3s;
+    }
+     
+     .body-modal {
+       max-height:1000px;
+       opacity:1;
+       transition:0.1s max-height 0.2s, 0.1s opacity 0.2s, ;
+     }
+  }
+  
+}
+    </style>
+</head>
+<body>
+
+        <header class="header">
+          <div class="container">
+            <figure class="avatar">
+              <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/15977755_10207841229656791_4781027181067511410_n.jpg?oh=3d09a537577b5d916689bc1b8a8d6d28&oe=5965881F" alt="" />
+            </figure>
+            <h1>AgilBAKAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+            <span id="edit">Edit profile</span>
+          </div>
+        </header>
+        
+        <!-- content pop up  -->
+        <div class="box-modal">
+          <div class="overlay"></div>
+          <div class="body-modal">
+            <div class="inner-body-modal">
+              <h2>Key Performance Indicators:</h2>
+              <ul>
+                  <li>Leading a team of 10 production In-charge with 150+ workforce of Composite yarn & Glove manufacturing and executed monthly production output of 8,000 kgs composite yarn & 180,000 DP (dozen pair) gloves.</li>
+                  <li>Planning and executing Production within a standard time frame.</li>
+                  <li>In batch production, plan and prioritize operations to ensure maximum performance and minimum delays.</li>
+                  <li>Ensure that the machine is running as per QPP, and all operations are carried out as per SOP’s.</li>
+                  <li>Ensure preventive maintenance of each machine as per schedule.</li>
+                  <li>Worker allocation planning and effective utilization according to approved strength on daily basis.</li>
+                  <li>Ensure availability of raw material before starting production.</li>
+                  <li>Ensure to achieve production targets, safety targets, Zero LTI, daily TBT, UA/UC reporting and closing, zero variance in monthly stock, execution of Preventive plans, Zero WIP.</li>
+                  <li>Ensure safety compliance before starting any work/operation in your area.</li>
+                  <li>Develop and maintain worker’s skill matrix and derived TNA through it.</li>
+                  <li>Work on Lean Manufacturing to reduce wastes in production.</li>
+                  <li>Maintain 5S score greater than 4.</li>
+                  <li>Propose at least one High risk project in a year.</li>
+                  <li>Record and maintain data of solid disposal/wastages.</li>
+                  <li>Submit daily production report, down time report and defects report and recording in SAP.</li>
+                  <li>Coordinate with Technical Department team if any deviation observed during process.</li>
+                  <li>Ensure timely closure of MSA and QMS observations.</li>
+                  <li>Coordinating with R&D to validate new product.</li>
+                  <li>Develop alternate product with the help of R&D team to improve productivity and reduce cost.</li>
+                  <li>Coordinating with ERP & Master Data teams to ensure system accuracy and making updates when required.</li>
+                  <li>Preparing performance report.</li>
+                  <li>Creating BOM, Recipe etc. of new product.</li>
+                  <li>Delivering Improvement Projects with significant cost and quality impact.</li>
+                  <li>Developed training plans for junior resources focusing on their professional growth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+    <script>
+        $('#edit').on('click', function(){
+    $('body').addClass('active-modal');
+    $('.box-modal').addClass('modal-show');
+  });
+  
+  $('.overlay').on('click', function(){
+    $('body').removeClass('active-modal');
+    $('.box-modal').removeClass('modal-show');
+  })
+    </script>
+</body>
+</html>
