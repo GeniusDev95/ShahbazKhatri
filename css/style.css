@@ -394,8 +394,87 @@ mark,
 
 .img-fluid {
   max-width: 100%;
-  height: auto; }
-
+  height: auto;
+  
+ }
+@media (max-width: 425px) {
+  .ftco-hireme .img-fluid {
+    margin-left: 0px;
+    margin-top: -100px;
+  }
+  .ftco-hireme .btn{
+    float: right;
+    margin-right: 20px;
+  }
+  .slider-item .img {
+    background-position: center center;
+    background-position-x: -450px;
+  }
+  .ftco-counter .row {
+    margin-left: 10%;
+    margin-left: none;
+  } 
+  .ftco-about .subheading, .ftco-about h2 {
+    text-align: center;
+  }
+  .ftco-about .my-interest .interest-wrap {
+    padding-left: 20px;
+  }
+  .blog-section p, .blog-section h3, .blog-section .colgName{
+    text-align: center;
+  }
+  .blog-entry .meta {
+    display: block !important;
+  }
+  .block-9 .pData {
+    margin-left: 4%;
+    margin-top: 20px;
+  }
+  .ftco-footer{
+    text-align: center;
+  }
+  .service-links{
+    display: none;
+  }
+  .fa-chevron-right{
+    display: none;
+  }
+  .f-bottom{
+    margin-bottom: 40px ;
+  }
+  .block-23 ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ftco-about ul.about-info li span:first-child {
+    font-weight: 600;
+    color: #000000;
+    width: 80px !important;
+    font-size: smaller;
+  }
+  .ftco-about ul.about-info li span {
+    width: calc(100% - 100px);
+    color: #b1b493;
+    font-size: 14px;
+  }
+  .owl-carousel .owl-stage-outer {
+    margin-top: -50px;
+  }
+  .owl-carousel.home-slider .slider-item .slider-text .one-forth .text {
+    margin-top: 100px;
+  }
+  .dbox .text{
+    width: calc(100% - 30px);
+    padding-left: 10px;
+    padding-top: 3px;
+    font-size: smaller;
+  }
+  .blog-section {
+    padding: 2em 0 !important;
+}
+}
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
@@ -9180,7 +9259,7 @@ textarea.form-control {
 .ftco-footer {
   font-size: 16px;
   background: #232931;
-  padding: 7em 0;
+  padding: 7em 0 2em 0;
   z-index: 0; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
@@ -9396,7 +9475,8 @@ textarea.form-control {
   height: 300px; }
 
 .blog-entry {
-  position: relative; }
+  position: relative;
+  width: 100%; }
   @media (min-width: 768px) {
     .blog-entry {
       margin-bottom: 30px; } }
