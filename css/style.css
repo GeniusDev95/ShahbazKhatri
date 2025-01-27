@@ -461,6 +461,7 @@ mark,
   }
   .owl-carousel .owl-stage-outer {
     margin-top: -50px;
+    overflow: auto;
   }
   .owl-carousel.home-slider .slider-item .slider-text .one-forth .text {
     margin-top: 100px;
