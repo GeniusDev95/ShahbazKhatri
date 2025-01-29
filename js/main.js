@@ -43,6 +43,7 @@
 		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
 
 			event.preventDefault();
+			$('#ftco-nav').css('display', 'block');
 
 			if ( $('#ftco-nav').is(':visible') ) {
 				$(this).removeClass('active');
@@ -65,7 +66,7 @@
 	    event.preventDefault();
 
 	    var href = $.attr(this, 'href');
-
+		$('#ftco-nav').hide();	
 	    $('html, body').animate({
 	        scrollTop: $($.attr(this, 'href')).offset().top - 70
 	    }, 500, function() {
@@ -88,6 +89,8 @@
 	    nav:false,
 	    autoplayHoverPause: false,
 	    items: 1,
+		touchDrag: true,    // Enable touch dragging
+    	mouseDrag: true,  
 	    navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
 	    responsive:{
 	      0:{
@@ -101,6 +104,7 @@
 	      }
 	    }
 		});
+		
 		$('.carousel-testimony').owlCarousel({
 			center: true,
 			loop: true,
@@ -126,6 +130,7 @@
 	};
 	carousel();
 
+	
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
 		// 	 timer;

@@ -57,6 +57,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
+  overflow-y: auto;
   background-color: #fff; }
 
 [tabindex="-1"]:focus {
@@ -400,11 +401,13 @@ mark,
 @media (max-width: 425px) {
   .ftco-hireme .img-fluid {
     margin-left: 0px;
-    margin-top: -100px;
+    margin-top: -45px;
   }
   .ftco-hireme .btn{
     float: right;
-    margin-right: 20px;
+    position: absolute;
+    z-index: 1;
+    right: 20px;
   }
   .slider-item .img {
     background-position: center center;
@@ -461,11 +464,12 @@ mark,
   }
   .owl-carousel .owl-stage-outer {
     margin-top: -50px;
-    overflow: auto;
+    /* overflow: hidden; */
   }
   .owl-carousel.home-slider .slider-item .slider-text .one-forth .text {
     margin-top: 100px;
   }
+  
   .dbox .text{
     width: calc(100% - 30px);
     padding-left: 10px;
@@ -474,6 +478,18 @@ mark,
   }
   .blog-section {
     padding: 2em 0 !important;
+  }
+  .inner-body-modal-AM, .inner-body-modal-SO, .inner-body-modal-SE, .inner-body-modal-DM, .inner-body-modal-LM { 
+    margin: 5%;
+  }
+  .custom-button{
+    padding: 0px !important;
+    background: transparent !important;
+    color: honeydew !important;
+    border-color: transparent !important;
+  }
+  .custom-close {
+    top: 50px !important;
 }
 }
 .img-thumbnail {
