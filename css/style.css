@@ -490,7 +490,10 @@ mark,
   }
   .custom-close {
     top: 50px !important;
-}
+  }
+  #section-counter {
+    padding-bottom: 0px;
+  }
 }
 .img-thumbnail {
   padding: 0.25rem;
